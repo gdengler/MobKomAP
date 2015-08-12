@@ -1,0 +1,49 @@
+\section{Einführung in die Mobilkommunikation}
+\subsection{Multiplexing}
+\subsubsection{Raum-Multiplex}
+Raum wird in verschiedene Bereiche aufgeteilt und jedem Konkurrenten/Teilnehmer ein Bereich zugewisen, so dsas diese sich bei zeitgleicher Nutzung nicht gegenseiteig beeinflussen können. \\
+\textbf{Beispiel :} Mobilfunk-Zellenaufteilung, Kabelbündel
+
+\subsubsection{Zeit-Multiplex TDMA}
+Das Medium der Kommunikation darf von jedem Konkurrenten exklusiv für eine bestimmte Periode genutzt werden (Zeitabschnitt wird zugewiesen, fest oder zufällig je nach Bedarf) \\
+\textbf{Beispiel :} Festnetzte,GSM,IEEE 802,3 (CSMA/CD)
+
+\subsubsection{Frequenz-Muliplex FDMA}
+Jedem Konkurrenten um das MEdium wird eine exklusive Frequenz zugewiesen, auf der er dann zeitgleich mit den anderen senden kann.
+\textbf{Beispiel :} Radio-/TV-Frequenz, GSM-Netz, Betriebsfunknetze,Glasfasernetze
+
+\subsubsection{Code-Multiplex CDMA}
+Zuordnung exklusiver Codes zu einzelnen Sendern, so dass alle gleichzeitig auf einer identischen Frequenz senden können, aber anhand des Codes eindeutig identifiziert werden können.
+\textbf{Beispiel :} UMTS
+
+\subsection{Störung}
+\subsubsection{Abschattung}
+Durch Hindernisse kann ein Signal abgeschattet (shadowing) werden. Der Empfang wird dadurch erschwert oder verhindert
+\textbf{Beispiel :} Hochhäuser, Tunnel
+
+\subsubsection{Reflexion}
+Wellenförmiges Signal wird an grosser Fläche (spiegelartig) reflektiert. Reflektierte Signale sind schwächer als direkt empfangene (wenn sie denn überhaupt empfangen werden)
+
+\subsubsection{Streuung}
+Relativ kleine Hindernisse können das Signal streuen (scattering), das sich dann in verschiedene Richtungen weiterbewegt.
+
+\subsubsection{Beugung}
+Kanten können eine Beugung (diffraction)/Ablenkung des Signals verursachen.
+
+\subsubsection{Dämpfung \& Verzögerung}
+Empfangsleistung nimmt proportional zum Quadrat der Entfernung zwischen Sender und Empfänger ab(path loss). Zeitrahmensynchronisation ist ortsabhängig (time alginment)
+
+\subsubsection{Interferenzen}
+Konkurrieren mehrer Mobilstationen um das Übertragungsmedium können Interferenzen (Überlagerung zwischen getrennten Kanälen) auftreten.
+
+\subsubsection{Mehrwegausbreitung-Multipath Fading}
+\begin{itemize}
+\item Aufgrund von Streuung, Beugung und REflexion kann das Signal das Ziel auf unterschiedlichen Wegen erreichen.
+\item Der Impuls des Senders kann beim Empfänger mehrfach und zeitlich versetzt auftreten.
+\item Die Stärke der eingehenden Signale schwankt, da die Ausbreitungswege unterschiedliche Dämpfung aufweisen können.
+\item Unterschieden wird zwischen 
+\begin{itemize}
+\item Rayleigh Fading 
+\item Time Dispersion
+\end{itemize}
+\end{itemize}

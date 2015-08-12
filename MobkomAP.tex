@@ -1,0 +1,60 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dokumentinformationen                                   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Mobkom AP Zusammenfassung}
+\author{D. Bargen, G. Dengler}
+
+\documentclass[10pt,twoside,a4paper,fleqn]{article}
+\include{header/zusammenfassung}
+% Header
+
+% \input macht keine neue Seiteß% \include macht eine neue Seite
+
+\usepackage{tikz}
+\usetikzlibrary{fit}
+\usepackage{circuitikz}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\setlist{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
+\usepackage{textcomp} % Für Grad zeichen
+
+\setlength{\mathindent}{0pt}
+\raggedbottom
+\begin{document}
+
+\begin{titlepage}
+	\maketitle
+
+	\vspace{100mm}
+
+	%\includegraphics{hsr_logo.png}
+	\thispagestyle{empty} % Don't start page numbers on this page
+\end{titlepage}
+\setcounter{tocdepth}{2}
+\tableofcontents 
+
+\newpage
+
+\section{Einführung in die Mobilkommunikation}
+\input{./section/Einfuehrung}
+\section{GSM - Global System for Mobile Communications}
+\input{./section/GSM}
+\section{UMTS - Universal Mobile Telecommunications System}
+\input{./section/UMTS}
+\section{LTE - Long Term Evolution}
+\input{./section/LTE}
+\input{./section/LTE2}
+\section{EPS - Evolved Packet System}
+\input{./section/EPS}
+\section{WIMAX - Worldwide Interoperability for Microwave Access}
+\input{./section/WIMAX}
+\section{WLAN - Wireless Local Area Network}
+\input{./section/WLANundErgaenzungen}
+\section{Bluetooth}
+\input{./section/Bluetooth}
+
+\appendix
+\section{Glossary}
+\input{./section/glossary}
+\end{document}
+
