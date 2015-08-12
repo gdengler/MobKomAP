@@ -351,6 +351,54 @@ Die Verbindungsaufbau-Prozedur wird abgewickelt und ein TCH wird zugewiesen (Tr�
 \includegraphics[width =  \linewidth]{./Pics/GSMCGIundBSIC} 
 \end{minipage}
 
+\subsection{Abläufe}
+\subsubsection{Die Rolle der SIM}
+Die SIM (Subscriber Identity Module) Karte ist die individuelle oder personalisierte Zugangsberechtigung zum PLMN.
+\begin{itemize}
+\item Die SIM Karte ist eine Chipkarte, die in eine MS eingefügt werden muss, um sich bei einem PLMN anzumelden
+\item Die SIM speichert:
+\begin{itemize}
+\item Permanente Daten, z.B. IMSI, authentification key Ki, Liste der Trägerfrequenzen
+\item Temporäre Daten, z.B. den aktuellen LAC, Zeitintervall für das location update, verbotene PLMNs....
+\item Service-Daten, Service-Tabellen der zusätzlichen Dienstmerkmale, z.B. Spracheinstellungen, Taxiruf....
+\end{itemize}
+\item Es werden zwei Kartentypen unterschieden (gemäss Wikipedia 5)
+\begin{itemize}
+\item ID-1 SIM Card in Kreditkartengrösse (gemäss Wikipedia Standard SIM)
+\item Plug-in SIM (kleiner als die ID-1) für semi-permanente Installation (gemäss Wikipedia Mini SIM)
+\item seit 2003 Micro SIM, ist kleiner als Mini SIM (gemäss Wikipedia)
+\item seit 2012 Nano SIM, ist kleiner als Micro SIM (gemäss Wikipedia)
+\item in Zukunft Embedded SIM (gemäss Wikipedia)
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Sicherheitsprotokolle und die Rolle des AUC}
+
+\begin{minipage}{0.5 \linewidth}
+\begin{itemize}
+\item Die Hauptaufgabe des AUC (Authentication Center) ist, die Informationen bereitzustellen, die das MSC/VLR benötigen um den Subscriber zu authentisieren und einen Schlüssel zur Verschlüsselung der Daten zu finden
+\item Dazu erzeugt das AUC ein so genanntes Triplet
+\begin{itemize}
+\item RAND (Random Number)
+\item SRES (Sigend Respons)
+\item ein Schlüssel KC zur Verschlüsselung 
+\end{itemize}
+\item mit einer Anfrage werden 1,3 oder 5 Triplets erzeugt
+\end{itemize}
+\vspace{0.5 cm}
+\textbf{Die Authentifizierung kann erfolgen bei}
+\begin{itemize}
+\item der Registrierung {attatching the Network}
+\item jedem Verbindungsaufbau
+\item jedem Location Updating
+\item vor dem Start von Zusatzdiensten
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.5 \linewidth}
+\includegraphics[width =  0.75 \linewidth]{./Pics/GSMAUC} 
+\includegraphics[width =  \linewidth]{./Pics/GSMAuthentifizierung} 
+\end{minipage}
+
 \subsection{GPRS - General Packet Radio Service}
 \input{./section/GPRS}
 
