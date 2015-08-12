@@ -398,6 +398,185 @@ Die SIM (Subscriber Identity Module) Karte ist die individuelle oder personalisi
 \includegraphics[width =  0.75 \linewidth]{./Pics/GSMAUC} 
 \includegraphics[width =  \linewidth]{./Pics/GSMAuthentifizierung} 
 \end{minipage}
+\subsubsection{Verschlüsselungsprozedur}
+\includegraphics[width =  0.5 \linewidth]{./Pics/GSMVerschluesselung} 
+
+\subsubsection{Anmeldeprozedur: IMSI Attach}
+\begin{minipage}{0.5 \linewidth}
+\includegraphics[width = \linewidth]{./Pics/GSMIMSIAttach}
+\end{minipage}
+\begin{minipage}{0.5 \linewidth}
+\begin{enumerate}
+\item Die MS sendet ein IMSI attach an das Netz mit der Zustandsangabe Idle.
+\item Das VLR prüft, ob ein Datensatz der MS vorliegt. Liegt noch kein Datensatz vor, so kontaktiert das VLR das HLR und fordert die Subscriberinformation an. Hat sich ferner die LA geändert, so muss die neue LA ebenfalls ins VLR eingetragen werden
+\item Das VLR setzt den Zustand der MS auf Idle
+\item Es erfolgt eine Bestätigung an die MS, das die Anmeldung erfolgreich durchgeführt wurde.
+\end{enumerate}
+\end{minipage}
+
+\subsubsection{Anmeldeprozedur: Location Update}
+\begin{minipage}{0.5 \linewidth}
+\includegraphics[width = \linewidth]{./Pics/GSMLocationUpdate}
+\end{minipage}
+\begin{minipage}{0.5 \linewidth}
+\begin{enumerate}
+\item Die MS hört ständig den aktuellen BCCH mit. Hier erhält sie unter anderem auch die Information über die LAI. Ist die LAI unterschiedlich der auf der SIM gespeicherten, so muss ein location update durchgeführt werden. 
+\item Die MS muss dazu eine Verbindung zum Netz aufbauen (Anforderung eines SDCCH). Eine Authentisierung wird durchgeführt.
+\item Ist die Authentisierung erfolgreich wird ein Location update Request an das System gesendet.
+\item Hat kein MSC-Wechsel stattgefunden, so aktualisiert die aktuelle MSC den LAI im VLR und gibt den Signalisierungskanal wieder frei.
+\end{enumerate}
+\end{minipage}
+
+\subsubsection{Abgehender Ruf}
+\begin{minipage}{0.5 \linewidth}
+\begin{enumerate}
+\item Via RACH wird erst ein Signalisierungskanal angefordert
+\item Die BSC teilt via AGCH der MS einen SDCCH zu
+\item Die MS sendet eine set-up request an das MSC. Ferner werden die folgenden Prozeduren durchgeführt:
+\begin{enumerate}
+\item Die MS wird als aktiv im VLR eingetragen
+\item Die Authentifizierungsprozedur wird durchgeführt
+\item Die Verschlüsselung wird eingeschaltet
+\item Die Ziel-Subscribernummer wird an das Netz übermittelt
+\item Prüfen, ob abehender Rufe gesperrt sind
+\end{enumerate}
+\item Die MSC instruiert die BSC einen idle TCH zu reservieren. Ferner müssen sich die BTS und die MS auf den TCH synchronisieren
+\item Die MSC leitet die Rufnummer weiter an die Zieladresse (ggf. PSTN)
+\item Wenn der gerufene Teilnehmer antwortet werden die reservierten Kanäle geschaltet
+\end{enumerate}
+\end{minipage}
+\begin{minipage}{0.5 \linewidth}
+\includegraphics[width = \linewidth]{./Pics/GSMRuf}
+\end{minipage}
+
+\subsubsection{Ankommender Ruf}
+\begin{minipage}{0.5 \linewidth}
+Der Hauptunterschied zu einem abgehenden Ruf besteht darin, dass der Zielteilnehmer erst noch gesucht werden muss. Die MSISDN kann nicht unmittelbar für die Signalisierung genutzt werden. 
+
+\includegraphics[width = \linewidth]{./Pics/GSMRuf2}
+\end{minipage}
+\begin{minipage}{0.5 \linewidth}
+\begin{enumerate}
+\item Die MSISDN wird im PSTN analysiert und an die GMSC weitergeleitet
+\item Die GMSC des gerufen PLMN analysiert die MSISDN und fragt das HLR ab, zu welcher Serving MSC das Gespräch weitergeleitet werden muss. 
+\item Das HLR überführt die MSISDN in die IMSI und entscheidet die Ziel MSC/VLR. Auserdem wird geprüft, ob zur Zeit Anrufe weitergeleitet werden sollen oder nicht
+\item Das HLR fordert einen MSRN von der serving MSC/VLR an
+\item Die serving MSC sendet via HLR die MSRN an die GMSC
+\item Die GMSC wertet die MSRN aus und leitet den Ruf weiter
+\item Die MSC/VLR kennt die LA und eine Paging-Nachricht wird an das BSC weitergeleitet
+\item Die BSC leitet die Paging-Nachricht weiter an die BTSen der LA. Zur Identifikation dienen IMSI oder TMSI
+\item Die MS antwortet mit einem request für einen SDCCH
+\item Die BSC weist einen SDCCH über einen AGCH zu 
+\item Die Call-set-up Prozedur wird durchgeführt und ein TCH reserviert sowie der SDCCH freigegeben
+\item Die MS Signalisiert (ringing). Wird der Anruf angenommen wird durchgeschaltet
+\end{enumerate}
+\end{minipage}
+
+\subsubsection{Handover}
+\begin{minipage}{0.5 \linewidth}
+\includegraphics[width = \linewidth]{./Pics/GSMHandover}
+\end{minipage}
+\begin{minipage}{0.5 \linewidth}
+\begin{enumerate}
+\item Intra BSC Handover. BSC ist involviert.
+\item BSC/Intra MSC Handover. Die BSC wird gewechselt. MSC ist involviert.
+\item Inter MSC Handover. MSC wird gewechselt. Die alte MSC wird anchor MSC genannt, die neue MSC dann serving MSC nachdem der Handover abgeschossen ist. Das Billing (Verrechnung) wird jedoch immer von der anchor MSC gemacht. Das bedeutet, dass der Traffic immer von der serving MSC zur anchor MSC (uplink) und von der anchor MSC zur serving MSC (downlink) geleitet wird.
+\end{enumerate}
+\end{minipage}
+\begin{minipage}{0.5 \linewidth}
+\includegraphics[width = \linewidth]{./Pics/GSMHandover2}
+\end{minipage}
+\begin{minipage}{0.5 \linewidth}
+\includegraphics[width = \linewidth]{./Pics/GSMHandover3}
+\end{minipage}
+
+\begin{minipage}{0.5 \linewidth}
+\includegraphics[width = \linewidth]{./Pics/GSMIntraHO}
+\end{minipage}
+\begin{minipage}{0.5 \linewidth}
+\begin{enumerate}
+\item Die BSC reserviert einen TCH in der neuen BTS
+\item Die MS wird über die alte Verbindung (FACCH) über die neue Frequenz, den Time Slot und die Sendeleistung informiert
+\item Die MS synchronisiert auf die Frequenz, die Rahmenstruktur und überträgt einen Handover Request über den FACCH. Der Handover Request hat nur einen Grösse von 8 Bit
+\item Die BTS sendet die TA Information via FACCH
+\item Die MS sendet ein Handover complete zur BSC über die neue BTS
+\item Die alte BTS wird aufgefordert den TCH freizugeben, die Verbindung wird durchgeschaltet
+\end{enumerate}
+\end{minipage}
+
+\begin{minipage}{0.5 \linewidth}
+\begin{enumerate}
+\item Die serving BSC sendet ein Handover Request an die MSC/VLR mit der ID der Zielzelle
+\item Die MSC/VLR identifiziert die neue BSC und sendet ein Handover Request an die neue BSC
+\item Die neue BSC reserviert einen TCH
+\item Die BSC sendet eine Message via MSC und alte BSC an die MS
+\item MS synchronisiert mit der neuen Frequenz auf neuem Timeslot und sendet Handover Request
+\item Information über die TA wird übertragen
+\item Die MS sendet Handover complete
+\item Die MS sendet der alten BSC die Aufforderung den alten TCH freizugeben
+\item Der alte TCH wird freigegeben. Die Verbindung ist durchgeschaltet 
+\end{enumerate}
+\end{minipage}
+\begin{minipage}{0.5 \linewidth}
+\includegraphics[width = \linewidth]{./Pics/GSMInterHO}
+\end{minipage}
+
+\begin{minipage}{0.5 \linewidth}
+\includegraphics[width = \linewidth]{./Pics/GSMInterMSCHO}
+\end{minipage}
+\begin{minipage}{0.5 \linewidth}
+\includegraphics[width = \linewidth]{./Pics/GSMInterMSCHO2}
+\end{minipage}
+
+\begin{enumerate}
+\item Die serving BSC sendet ein Handover Request an die MSC/VLR mit der ID der Zielzelle
+\item Die MSC/VLR identifiziert die neue Zelle in einer anderen MSC und sendet ein help request an die neue MSC
+\item Die neue MSC alloziert eine Handover-Number um den Ruf neu zu schalten. Ein Handover Request wird an die neue BSC gesendet
+\item Die neue BSC reserviert einen TCH in der neuen Zelle
+\item Die neuen BSC sendet eine Message (Zellinfo und Handover-Nummer) via MSCs und alte BSC an die MS
+\item Es wird eine Verbindung zur neuen MSC geschaltet
+\item Die MSC A sendet das Handover Command an die MS
+\item Ms synchronisiert mit der neuen Frequenz auf neuem Timeslot und sendet Handover Request 
+\item Information über die TA wird übertragen
+\item Die MS sendet Handover Complete
+\item Ein neuer Weg wird in der aletn MSC geschaltet und die Verbindung wird geschaltet
+\item Die MSC sendet der alten BSC die Aufforderung den alten TCH freizugeben (nicht mehr im Bild eingetragen). Die Verbindung ist durchgeschaltet. 
+\end{enumerate}
+Die alte Msc behält die Hauptkontrolle über die Verbindung, bis sie ausgelöst wird.
+
+\subsubsection{Roaming}
+\begin{itemize}
+\item Der prinzipielle Ablauf ist dem Anmelden im eigenen Netz identisch
+\item Erst versucht die MS sich im eigenen Netz anzumelden, ist dies nicht möglich sucht es andere BCCH-Träger von fremden Netzen
+\item Dann vergleicht es die gefundenen Netzte mit der Liste der verbotenen PLMNs (Auf SIM gespeichert)
+\item Findet die MS ein geeignetes Netz, so läuft die Anmeldeprozedur wie vorher besprochen, nur dass das HLR des eigenen Netzes konsultiert wird
+\end{itemize}
+
+\subsection{HSCSD - High Speed Circuit Switched Data}
+\begin{itemize}
+\item Herkömmlich Datenübertragung ist standardisiert mit 9.6 kbit/s
+\begin{itemize}
+\item Gesicherte Datenübertragung geht runter bis auf 4.8 kbit/s
+\item So genanntes advanced coding erlaubt 14.4 kbit/s
+\end{itemize}
+HSCSD High Speed Circuit Switched Data
+\begin{itemize}
+\item ist standardisiert
+\item Bündelung von bis zu 4 TDMA-Slots, um eine höhere Datenrate zu erreichen. (AIUR Air Interface User Rate)
+\item Vorteile:
+\begin{itemize}
+\item Verfügbar
+\item Konstante Qualität
+\item Einfach
+\end{itemize}
+\item Nachteile:
+\begin{itemize}
+\item Kanäle blockiert
+\item Teuer für den Benutzer
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
 
 \subsection{GPRS - General Packet Radio Service}
 \input{./section/GPRS}
