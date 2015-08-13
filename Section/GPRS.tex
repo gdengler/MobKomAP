@@ -40,7 +40,7 @@ TCP & Transmission Control Protocol & & \\
 \subsubsection{GTP}
 Das GPRS Tunnelling Protocol baut IP-basierte Verbindungen durch den Backbone auf. Datenpakete werden eingepackt \& unter Benutzung des GTP getunnelt. GTP nutzt unterhalb TCP oder UDP  abhängig von der Nutzeranforderung. Das ganze GPRS Netzwerk basiert auf einem IP Hop, was das Routing im Backbone bei Mobilität vereinfacht.
 
-\subsection{SNDCP - Sub Network Dependent Convergence Protocol}
+\subsubsection{SNDCP - Sub Network Dependent Convergence Protocol}
 \begin{itemize}
 \item Konvergenz von verschiedenen Protokollen zu einem Data-Link-Protokoll (unterstütz durch das LLC)
 \item Multiplext mehrere Verbindungen auf einen Link
@@ -49,7 +49,7 @@ Das GPRS Tunnelling Protocol baut IP-basierte Verbindungen durch den Backbone au
 \item Fragmentierung langer Datenpakete
 \end{itemize}
 
-\subsection{LLC - Logical Link Control Protocol}
+\subsubsection{LLC - Logical Link Control Protocol}
 
 \begin{itemize}
 \item Etabliert eine Verbindung zwischen Mobilstation \& SGSN
@@ -58,7 +58,7 @@ Das GPRS Tunnelling Protocol baut IP-basierte Verbindungen durch den Backbone au
 \item Unterstützung von point-to-multipoint Adressierung
 \end{itemize}
 
-\subsection{RLC - Radio Link Control Protocol}
+\subsubsection{RLC - Radio Link Control Protocol}
 
 \begin{itemize}
 \item Arbeitet im Bestätigungs-Modus
@@ -68,7 +68,7 @@ Das GPRS Tunnelling Protocol baut IP-basierte Verbindungen durch den Backbone au
 \item 1 PDTCH hat eine Datenrate von max. 21.4 kbit/s. Daraus ergibt sich die maximale Datenrate von 8 gebündelten PDTCH $\cdot$ 21.4 kbit/s = 171.2 kbit/s
 \end{itemize}
 
-\subsection{Logische Kanäle des GPRS}
+\subsubsection{Logische Kanäle des GPRS}
 \includegraphics[width = 0.6 \linewidth]{./Pics/GPRSKanaele}
 
 \begin{tabular}{p{0.15 \linewidth} p{0.15 \linewidth} p{0.3 \linewidth} p{0.3 \linewidth}}
