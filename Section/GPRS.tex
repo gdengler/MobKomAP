@@ -92,3 +92,87 @@ PRACH - Packet Random Access Channel & Uplink point to point & Ermittelt die Tim
 PTCCH - Packet Timing Advance Control Channel & Entweder uplink oder downlink point to point & Ermittelt TA durch erhalt von Access Burst (erhalt durch UL) Sendet TA an eine Stadtion. & Sendet Access Burst zur BS. Wendet TA an. \\
 \bottomrule
 \end{tabular}
+
+\subsubsection{Session Setup}
+
+\begin{minipage}{0.5 \linewidth}
+\includegraphics[width = \linewidth]{./Pics/SessionSetup} \\
+
+\includegraphics[width = \linewidth]{./Pics/Packetdownlink} \\
+
+\includegraphics[width = \linewidth]{./Pics/MSDatenverkehr} \\
+
+\includegraphics[width = \linewidth]{./Pics/GPRSZustandsdarstellung} \\
+\end{minipage}
+\begin{minipage}{0.5 \linewidth}
+\begin{itemize}
+\item UE meldet sich bei SGSN an
+\item SGSN speichert Daten zur Mobilität und Sicherheit der MS
+\item zum senden von Daten, muss UE PDP context aktivieren in SGSN  und GGSN
+\item PDP context - Packet Data Protocol Context
+\begin{itemize}
+\item Beinhaltet alle notwenigen Informationen zum Datentranfer zwischen MS und GGSN über die PS domain
+\begin{itemize}
+\item MS IP adresse
+\item Name des gewünschten Service/Netzwerks
+\item mögliche Beschreibung des gesendeten Traffic
+\item QoS Profil 
+\end{itemize}
+\item QoS Profil in PDP context gehört nur zum Radio link nicht zum Core Network. 
+\item Im CN wird best effort IP verwendet
+\item PDP context kann während einer Session nur vom SGSN verändert werden
+\end{itemize}
+\end{itemize}
+
+\includegraphics[width = \linewidth]{./Pics/changingSGSN} \\
+
+\includegraphics[width = \linewidth]{./Pics/MSDatenverkehr2} \\
+
+\begin{itemize}
+\item Im Ready Zustand
+\begin{itemize}
+\item der exakte Aufenthaltsort der MS ist bekannt (ID der Zelle)
+\item ankommende Daten für die MS können sofort an die PCU weitergeleitet werden, wo dann die Ressourcen (Timeslots) der MS zugeteilt werden
+\item Es ist kein Paging nötig
+\end{itemize}
+\item Im Standby Modus muss die MS gepaged werden.
+\end{itemize}
+\end{minipage}
+
+\begin{minipage}{0.5 \linewidth}
+\includegraphics[width = \linewidth]{./Pics/interSGSN} \\
+\includegraphics[width = \linewidth]{./Pics/interSGSN2} \\
+\large{\textbf{GPRS leistet:}}
+\begin{itemize}
+\item Flächendeckender Dienst
+\item Sicher, da basierend auf dem GSM Standard
+\item Übliche (realistische) Übertragungsrate ca. 50 kbit/s
+\item Bis vss. 2007 die  wichtigste Technologie für mobilen Datendienst
+\item Wachstum in GPRS bis zu 30\% bis 2007
+\item Auswahl an preiswerten, einfachen, ausgereiften und sicheren Diensten und Endgeräten
+\item Genügend Bandbreite für die meisten bisher genutzten Anwendungen (veraltet)
+\item Sichere Investition für die kommenden 3 Jahr (veraltet)
+\item kann auch in Randgebieten genutzt werden
+\item internationales roaming möglich
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.5 \linewidth}
+\begin{enumerate}
+\item Die MS detektiert eine neue Rountig Area (RA) und sendet einen RA Update Request (inklusive der alten P SRES) an die neue SGSN
+\item Die neue SGSN fordert die alte SGSN auf, die Subscriberdaten (MM (Mobility Management) und PDP (Packet Data Protocol, z.B. IP oder X.25) context), zu übergeben:
+\begin{itemize}
+\item die neue SGSN-Adresse wird gespeichert, um später die Datenpackete weiterzuleiten.
+\end{itemize}
+\item Optional kann eine neue Sicherheitsüberprüfung durch die SGSN durchgeführt werden.
+\item Context Request ist erfolgreich abgeschlossen und die neue SGSN kann die Datenpackete der alten SGSN empfangen
+\item Die alte SGSN beginnt die gepufferten PDU's weiterzuleiten
+\item Die SGSN sendet die neuen Lokalisationsdaten und PDP-Context an die GGSN. Die die Aktion bestätig
+\item Der HLR/RA-Eintrag der MS wird aktualisiert
+\item Die alten Einträge bzgl. der MS werden im alten SGSN gelöscht.
+\item Die Subscriber-Daten werden dem neuen SGSN zur Aktualisierung im RA übertragen und die neuen SGSN bestätigt die Aktion
+\item Das HLR bestätigt das Locationupdate
+\item Sofern eine Assoziation zwischen der alten SGSN und dem MSC/VLR besteht und mit dem Rountig Area Update Request kein VLR Location update verbunden war, wird ein LA-update durchgeführt
+\item Die SGSN validiert die neue RA der MS. Ist der Eintrag in Ordnung, erhält die MS ein Rountig Area Update Accept mit neuer P-TMSI und weitern Parametern
+\item Die MS bestätigt den Empfang der neuen P-TMSI mit einem Rountg Area Update Complete
+\end{enumerate}
+\end{minipage}
