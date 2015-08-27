@@ -237,3 +237,60 @@ UE (User Equipment)
 \end{itemize}
 \end{itemize}
 \end{minipage}
+
+\subsection{Channelization Codes}
+\begin{minipage}{0.3\linewidth}
+\includegraphics[width = \linewidth]{./Pics/UMTSChannel}\\
+\includegraphics[width = \linewidth]{./Pics/UMTSCode}\\
+\includegraphics[width = \linewidth]{./Pics/UMTSCellRange}\\
+\end{minipage}
+\begin{minipage}{0.7\linewidth}
+\begin{itemize}
+\item Dienen der Bandspreizung
+\item Regulieren die Datenrate
+\item Je grösser der Channelization Code gewählt ist, desto kleiner ist die Datenrate, aber auch die Störanfälligkeit
+\item Verwendete Channelization Codes UL: C4-C256, DL: C4-C512
+\item Channels (UL/DL) und Benutzer (DL) können durch Channelization Codes unterschieden werden.
+\item Scrambling Codes:
+\begin{itemize}
+\item Sind ebenfalls orthogonal zueinander
+\item spezielle Eigenschaft: Sie sind auch dann noch fast zu 100 \% orthogonal, wenn Bitverschiebung auftreten
+\item Das raucht aus, um die Signale der Benutzer erfolgreich auseinanderhalten zu können
+\item Dienen nur der orthogonalen Codierung, nicht aber der Bandspreizung
+\item Dienen im DL der Zellunterscheidung
+\item Dienen im UL der Unterscheidung der Benutzer
+\end{itemize}
+\end{itemize}
+
+\subsection{Vergleich UMTS/GPRS}
+\begin{itemize}
+\item GPRS:
+\begin{itemize}
+\item teilt das Netz nur Ressourcen zu, wenn diese benötigt werden(Zeitschlitze) 
+\item Ressourcen-Anforderung durch MS oder Netz
+\item Probleme bei burstartigem Verkehr mit kurzen Datenblöcken
+\item Lange Handover Zeiten
+\end{itemize}
+\item UMTS:
+\begin{itemize}
+\item höhere Bandbreite
+\item senden auf einer Frequenz $\rightarrow$ einfachere Zell/Frequenzplanung
+\item keine Reservierung von Zeitschlitzen
+\item Zuweisung von Codes
+\begin{itemize}
+\item Spreiz Codes (SPreeding)
+\begin{itemize}
+\item Adressierung der Nutzer
+\item Individuell, flexible Datenrate
+\end{itemize}
+\item Scrambling
+\begin{itemize}
+\item Gleichmässige Spektralverteilung
+\item Unterscheidung der Basisstationen (DL)
+\item Individueller Code für Basisstationen im UL
+\item Softhandover möglich
+\end{itemize}
+\end{itemize}
+\end{itemize}
+\end{itemize}
+\end{minipage}
